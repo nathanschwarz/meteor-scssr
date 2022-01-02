@@ -9,7 +9,9 @@ Package.describe({
 
 Package.onUse(api => {
   api.versionsFrom('1.9')
+  api.use('ecmascript')
   api.use('isobuild:compiler-plugin@1.0.0')
+  //api.addFiles(['src/ServerStylesheet.js'], 'server')
 })
 
 Npm.depends({
@@ -20,6 +22,9 @@ Package.registerBuildPlugin({
   name: 'scssCompiler',
   use: ['caching-compiler', 'ecmascript'],
   sources: ['src/compile-scss.js'],
+  npmDependencies: {
+    sass: '1.45.0',
+  },
 })
 
 // Package.onTest(api => {
